@@ -5,7 +5,6 @@ provider "aws" {
 
 resource "aws_s3_bucket" "example" {
   bucket = "Azure_Devops_Bucket"
-  acl = "private"
   versioning {
     enabled = true
   }
