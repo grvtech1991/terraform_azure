@@ -4,7 +4,7 @@ provider "aws" {
 
 
 resource "aws_s3_bucket" "example" {
-  bucket = "Azure_Devops_Bucket"
+  bucket = "azure_devops_bucket"
   
   tags = {
     Environment = "test"
