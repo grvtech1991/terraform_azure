@@ -4,7 +4,7 @@ provider "aws" {
 
 
 resource "aws_s3_bucket" "example" {
-  bucket = "azure"
+  bucket = "terraform-azure-devops"
   
   tags = {
     Environment = "test"
