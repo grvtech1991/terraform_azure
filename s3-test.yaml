@@ -58,14 +58,14 @@ stages :
                   commandOptions: '-reconfigure'
                   backendServiceAWS: 'terraform'
                   backendAWSBucketName: 'terraform-1991'
-                  backendAWSKey: terraform.tfstate
+                  backendAWSKey: 'terraform.tfstate'
               - task: TerraformTaskV1@0
                 displayName: 'plan'
                 inputs:
                   provider: 'aws'
                   command: 'plan'
+                  workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
                   commandOptions: '-out s3-plan'
-				          workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
                   environmentServiceNameAWS: 'terraform'
  
   - stage: apply
