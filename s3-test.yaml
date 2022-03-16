@@ -10,7 +10,7 @@ trigger:
 
 pool:
   name: Azure Pipelines
-  vmImage: 'Hosted Agent'
+  vmImage: 'Hosted-Agent'
 
 stages :
   - stage: validate
