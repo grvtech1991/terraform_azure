@@ -94,8 +94,8 @@ stages :
                 inputs:
                   provider: 'aws'
                   command: 'plan'
+                  workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
                   commandOptions: '-out s3-plan'
-				  workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
                   environmentServiceNameAWS: 'terraform'
               - task: TerraformTaskV1@0
                 displayName: 'apply'
