@@ -10,18 +10,16 @@ trigger:
 
 pool:
   name: devops
-  vmImage: 'terraform'	
+  vmImage: 'terraform'
 
-  # Install Terraform Latest
-    steps:
+# Install Terraform Latest
+steps:
 - task: TerraformInstaller@0
   inputs:
     terraformVersion: 'latest'
-     inputs:
-    terraformVersion: 'latest'
 
-  # Terraform Init
-    steps:
+# Terraform Init
+steps:
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
       displayName: 'Terraform : init'
 	  inputs:
