@@ -30,7 +30,7 @@ steps:
     backendAWSBucketName: 'terraform-1991'
     backendAWSKey: 'terraform.tfstate'
   # Terraform Plan
-    steps:
+  steps:
     - task: TerraformCLI@0
       displayName: 'Terraform : plan'
       inputs:
@@ -42,7 +42,7 @@ steps:
 
 
   # Terraform Apply
-    steps:
+  steps:
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
       displayName: 'Terraform : apply'
       inputs:
@@ -53,7 +53,7 @@ steps:
         environmentServiceNameAWS: terraform
 
   # Terraform Destroy
-    steps:
+  steps:
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
       displayName: 'Terraform : destroy'
       inputs:
