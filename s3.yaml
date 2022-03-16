@@ -19,7 +19,6 @@ steps:
     terraformVersion: 'latest'
 
 # Terraform Init
-steps:
 - task: TerraformTaskV2@2
   inputs:
     provider: 'aws'
