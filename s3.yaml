@@ -20,15 +20,15 @@ steps:
 
 # Terraform Init
 steps:
-    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
-      displayName: 'Terraform : init'
-	  inputs:
-        provider: aws
-        workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
-        commandOptions: '-reconfigure'
-        backendServiceAWS: terraform
-        backendAWSBucketName: 'terraform-1991'
-        backendAWSKey: terraform.tfstate
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'aws'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
+    commandOptions: '-reconfigure'
+    backendServiceAWS: 'terraform'
+    backendAWSBucketName: 'terraform-1991'
+    backendAWSKey: 'terraform.tfstate'
 
   # Terraform Plan
     steps:
