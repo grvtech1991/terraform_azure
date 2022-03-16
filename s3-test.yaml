@@ -58,7 +58,7 @@ stages :
                   commandOptions: '-reconfigure'
                   backendServiceAWS: 'terraform'
                   backendAWSBucketName: 'terraform-1991'
-                  backendAWSKey: 'terraform.tfstate'
+                  backendAWSKey: terraform.tfstate
               - task: TerraformTaskV1@0
                 displayName: 'plan'
                 inputs:
