@@ -40,23 +40,19 @@ steps:
     environmentServiceNameAWS: 'terraform'
 
 
-  # Terraform Apply
-  steps:
-    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
-      displayName: 'Terraform : apply'
-      inputs:
-        provider: aws
-        command: apply
-        workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
-        commandOptions: '"s3-plan"'
-        environmentServiceNameAWS: terraform
+# Terraform Apply
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'aws'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
+    commandOptions: '"s3-plan"'
+    environmentServiceNameAWS: 'terraform'
 
-  # Terraform Destroy
-  steps:
-    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
-      displayName: 'Terraform : destroy'
-      inputs:
-        provider: aws
-        command: destroy
-        workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
-        environmentServiceNameAWS: terraform
+# Terraform Destroy
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'aws'
+    command: 'destroy'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
+    environmentServiceNameAWS: 'terraform'
