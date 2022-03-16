@@ -1,0 +1,63 @@
+# Azure DevOps pipeline for AWS S3 Creation.
+
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - terraform_azure
+
+pool:
+  name: devops
+  vmImage: 'terraform'	
+
+  # Install Terraform Latest
+    steps:
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+      displayName: 'Install Terraform latest'
+
+  # Terraform Init
+    steps:
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
+      displayName: 'Terraform : init'
+	  inputs:
+        provider: aws
+        workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
+        commandOptions: '-reconfigure'
+        backendServiceAWS: terraform
+        backendAWSBucketName: 'terraform-1991'
+        backendAWSKey: terraform.tfstate
+
+  # Terraform Plan
+    steps:
+    - task: TerraformCLI@0
+      displayName: 'Terraform : plan'
+      inputs:
+        provider: aws
+        command: plan
+		workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
+        commandOptions: '-out s3-plan'
+        environmentServiceNameAWS: terraform
+
+
+  # Terraform Apply
+    steps:
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
+      displayName: 'Terraform : apply'
+      inputs:
+        provider: aws
+        command: apply
+        workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
+        commandOptions: '"s3-plan"'
+        environmentServiceNameAWS: terraform
+
+  # Terraform Destroy
+    steps:
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
+      displayName: 'Terraform : destroy'
+      inputs:
+        provider: aws
+        command: destroy
+        workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
+        environmentServiceNameAWS: terraform
