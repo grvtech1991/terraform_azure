@@ -8,9 +8,7 @@ trigger:
     include:
     - terraform_azure
 
-pool:
-  name: devops
-  vmImage: 'terraform'	
+pool: devops
 
 stages :
   - stage: validate
