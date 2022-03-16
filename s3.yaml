@@ -20,7 +20,7 @@ steps:
 
 # Terraform Init
 steps:
-- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
+- task: TerraformTaskV2@2
   inputs:
     provider: 'aws'
     command: 'init'
