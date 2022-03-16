@@ -27,7 +27,7 @@ steps:
     workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
     commandOptions: '-reconfigure'
     backendServiceAWS: 'terraform'
-    backendAWSBucketName: 'terraform-1991'
+    backendAWSBucketName: terraform-1991
     backendAWSKey: 'terraform.tfstate'
 
 
