@@ -8,8 +8,7 @@ trigger:
     include:
     - terraform_azure
 
-pool:
-  vmImage: 'ubuntu-latest'
+pool: devops
 
 # Install Terraform Latest
 steps:
