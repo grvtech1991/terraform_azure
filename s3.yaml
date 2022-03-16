@@ -9,17 +9,19 @@ trigger:
     - terraform_azure
 
 pool:
-  name: devops
+  name: 'devops'
   vmImage: 'terraform'
 
 # Install Terraform Latest
 steps:
 - task: TerraformInstaller@0
+  displayName: 'Use Terraform latest'
   inputs:
     terraformVersion: 'latest'
 
 # Terraform Init
 - task: TerraformTaskV2@2
+  displayName: 'Terraform : INIT'
   inputs:
     provider: 'aws'
     command: 'init'
@@ -32,6 +34,7 @@ steps:
 
 # Terraform Plan
 - task: TerraformTaskV2@2
+  displayName: 'Terraform : plan'
   inputs:
     provider: 'aws'
     command: 'plan'
@@ -42,6 +45,7 @@ steps:
 
 # Terraform Apply
 - task: TerraformTaskV2@2
+  displayName: 'Terraform : apply'
   inputs:
     provider: 'aws'
     command: 'apply'
@@ -51,6 +55,7 @@ steps:
 
 # Terraform Destroy
 - task: TerraformTaskV2@2
+  displayName: 'Terraform : destroy'
   inputs:
     provider: 'aws'
     command: 'destroy'
