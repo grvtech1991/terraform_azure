@@ -8,7 +8,9 @@ trigger:
     include:
     - terraform_azure
 
-pool: devops
+pool:
+  name: Azure Pipelines
+  vmImage: 'Hosted Agent'
 
 stages :
   - stage: validate
