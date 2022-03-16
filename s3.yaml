@@ -31,11 +31,11 @@ steps:
 
 
 # Terraform Plan
-- task: TerraformCLI@0
+- task: TerraformTaskV2@2
   inputs:
     provider: 'aws'
     command: 'plan'
-		workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
     commandOptions: '-out s3-plan'
     environmentServiceNameAWS: 'terraform'
 
