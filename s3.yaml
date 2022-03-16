@@ -28,16 +28,18 @@ steps:
     backendServiceAWS: 'terraform'
     backendAWSBucketName: 'terraform-1991'
     backendAWSKey: 'terraform.tfstate'
-  # Terraform Plan
-  steps:
-    - task: TerraformCLI@0
-      displayName: 'Terraform : plan'
-      inputs:
-        provider: aws
-        command: plan
+
+
+# Terraform Plan
+steps:    
+- task: TerraformCLI@0
+  displayName: 'Terraform : plan'
+  inputs:
+    provider: aws
+    command: plan
 		workingDirectory: '$(System.DefaultWorkingDirectory)/_grvtech1991_terraform_azure'
-        commandOptions: '-out s3-plan'
-        environmentServiceNameAWS: terraform
+    commandOptions: '-out s3-plan'
+    environmentServiceNameAWS: terraform
 
 
   # Terraform Apply
