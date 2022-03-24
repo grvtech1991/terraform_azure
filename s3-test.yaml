@@ -9,8 +9,8 @@ trigger:
     - terraform_azure
 
 pool:
-  name: Azure Pipelines
-  vmImage: 'Hosted-Agent'
+  vmImage: 'ubuntu-latest'
+
 
 stages :
   - stage: validate
